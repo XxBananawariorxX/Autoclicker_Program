@@ -14,7 +14,7 @@ from pynput.keyboard import Listener, KeyCode
     # exit_key: The key used to terminate the auto clicker that is being executed. This should be from the key class or set using KeyCode.
 delay = 0.5
 button = Button.right 
-start_stop_key = KeyCode(char='a') 
+start_stop_key = KeyCode(char='k') 
 stop_key = KeyCode(char='b') 
 
 # threading.Thread is used to control clicks 
