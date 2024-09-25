@@ -12,7 +12,7 @@ from pynput.keyboard import Listener, KeyCode
     # button: Button is used to click in whatever direction you want to.  Button.left | Button.middle | Button.right
     # start_stop_key: The key used for start and stop of the click while you run the program for executing the auto clicker. It should be from a key class or set using KeyCode.
     # exit_key: The key used to terminate the auto clicker that is being executed. This should be from the key class or set using KeyCode.
-delay = 0.5
+delay = 0.3
 button = Button.right 
 start_stop_key = KeyCode(char='k') 
 stop_key = KeyCode(char='b') 
