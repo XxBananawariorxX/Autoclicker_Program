@@ -1,80 +1,42 @@
-
-import pynput as pyin
-
+import pyautogui
 import time
-import threading
-# pynput.keyboard is used to watch events of keyboard for start and stop of auto-clicker
-from pynput.mouse import Button, Controller
-from pynput.keyboard import Listener, KeyCode
+import keyboard
 
-# four variables are created to control the auto-clicker 
-    # delay: Delay between each click (in seconds)
-    # button: Button is used to click in whatever direction you want to.  Button.left | Button.middle | Button.right
-    # start_stop_key: The key used for start and stop of the click while you run the program for executing the auto clicker. It should be from a key class or set using KeyCode.
-    # exit_key: The key used to terminate the auto clicker that is being executed. This should be from the key class or set using KeyCode.
-delay = 0.3
-button = Button.right 
-start_stop_key = KeyCode(char='k') 
-stop_key = KeyCode(char='b') 
+#program for autoclicker mouse
+def click1():
+    pyautogui.click(button = "left")
 
-# threading.Thread is used to control clicks 
-class ClickMouse(threading.Thread): 
-    
-  # delay and button is passed in class to check execution of auto-clicker 
-    def __init__(self, delay, button): 
-        super(ClickMouse, self).__init__() 
-        self.delay = delay 
-        self.button = button 
-        self.running = False
-        self.program_running = True
-  
-    def start_clicking(self): 
-        self.running = True
-  
-    def stop_clicking(self): 
-        self.running = False
-  
-    def exit(self): 
-        self.stop_clicking() 
-        self.program_running = False
-  
-    # method to check and run loop until it is true another loop will check  
-    # if it is set to true or not,  
-    # for mouse click it set to button and delay. 
-    def run(self): 
-        while self.program_running: 
-            while self.running: 
-                mouse.click(self.button) 
-                time.sleep(self.delay) 
-            time.sleep(0.1) 
-  
-  
-# instance of mouse controller is created 
-mouse = Controller() 
-click_thread = ClickMouse(delay, button) 
-click_thread.start() 
-  
-  
-# on_press method takes  
-# key as argument 
-def on_press(key): 
-    
-  # start_stop_key will stop clicking  
-  # if running flag is set to true 
-    if key == start_stop_key: 
-        if click_thread.running: 
-            click_thread.stop_clicking() 
-        else: 
-            click_thread.start_clicking() 
-              
-    # here exit method is called and when  
-    # key is pressed it terminates auto clicker 
-    elif key == stop_key: 
-        click_thread.exit() 
-        listener.stop() 
-  
-  
-with Listener(on_press=on_press) as listener: 
-    listener.join() 
+def main1():
+    time.sleep(3)
+    #number of clicks
+    while True:
+        if keyboard.is_pressed('b'):
+            break
+        else:
+            click1()
+
+
+#program for autoclicker keyboard
+def click2():
+    pyautogui.press("e")
+
+def main():
+    time.sleep(4)
+    status = 0
+    while True:
+        if keyboard.is_pressed("s"):
+            status = 1
+        elif keyboard.is_pressed("p"):
+            status = 0
+        elif keyboard.is_pressed("b"):
+            break
+        elif status == 1:
+            click2()
+        else:
+            pass
+
+
+
+
 
 
